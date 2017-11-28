@@ -1,0 +1,143 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var app = require('../app');
+var debug = require('debug')('web-app-ver-2:server');
+var http = require('http');
+let port_number = 8000
+
+let mysql = require("mysql")
+let mydb_connection = mysql.createConnection(
+  {
+    host     : 'localhost',
+    user     : 'admin',
+    password : 'Win_Sys_1',
+    database : 'mydb',
+  })
+
+insert_DB=(sql_insert_query)=>{
+  mydb_connection.connect();
+  
+  mydb_connection.query(queryString, 
+      function(err, rows, fields) {
+          if (err) {
+              throw err;
+          }
+          else{
+              console.log("insert was successful")
+          }
+          // for (var i in rows) {
+          //     console.log('Post Titles: ', rows[i].post_title);
+          // }
+      }//end of function
+  );  
+  mydb_connection.end();
+}
+
+query_DB=(select_query)=>{
+  mydb_connection.connect();//open the db connection to start queries
+  
+  mydb_connection.query(queryString, 
+      function(err, rows, fields) {
+          if (err) {
+              throw err;
+          }
+          else{
+              console.log("insert was successful")
+          }
+          let start_time, end_time
+          let key_presses = []
+          for (var i in rows) {
+              start_time = rows[0].start_time
+              end_time = rows[0].end_time
+              key_presses.push({
+                  key : rows[i].key_pressed,
+                  press_time : rows[i].pressed_time
+              })
+          }
+          return {
+              start : start_time,
+              end : end_time,
+              notes : key_presses
+          }
+      }//end of function
+  );//end connection.query     
+  mydb_connection.end()//close the db connection cause it's expensive to maintain
+}
+
+/**
+ * Get port from environment and store in Express.
+ */
+var port = normalizePort(process.env.PORT || port_number);
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}

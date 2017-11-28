@@ -1,0 +1,61 @@
+/*this is a css file*/
+
+/*tag styles*/
+html{background-color:white}
+header{background-color: black;}
+body{font-family: Helvetica, Arial, sans-serif;}
+footer{
+    background-color: black; 
+    color: rgba(250, 235, 215, 0.747); 
+    bottom: 0px}
+p{background: whitesmoke; color: black}
+
+/*class styles*/
+.my_image{background-color: black;}
+.colour_canvas{background-color:bisque;}
+.image_container{
+    background-color: aquamarine;
+    bottom:200px;
+    height:130px;
+    width : 760px;
+}
+
+.keyboard_key_container{
+    position:relative;
+    height:120px;
+}
+.keyboard_key{
+    float: left;
+    padding: 4px
+    
+}
+.pulse_container{
+    
+    color:chartreuse;
+    background:rgba(0,0,0,.7);
+    -webkit-transition:.5s ease all;
+    cursor:pointer;
+    left: 290px;
+    width:180px;
+    height:180px;
+    z-index:10000;
+    position:relative;
+    /*/*keeps children containers inside of itself*/
+
+    
+}
+.circle{
+    border-radius:50%;
+    background: rgba(0, 0, 0, 0.1); /*rgba(0,0,0,.1) or rgba(0,0,0,.5) or rgba(0,0,0,0)*/
+    box-shadow:0 0 1px 1px rgb(28, 214, 28); /*#0f0 or #0f00*/
+    /*box-sizing: border-box;*/
+    margin:auto;
+    position:absolute;/*keeps circles from moving outside the parent container*/
+    top:0;left:0;
+    bottom:0;right:0;
+    -webkit-transition:.1s ease all
+}
+/*id styles*/
+#content{
+    background-color:white;
+}

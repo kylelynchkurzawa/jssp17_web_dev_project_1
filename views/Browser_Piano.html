@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="stylesheets/my_style.css"/><!-- styles/my_style.css -->
+    <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" 
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" 
+    crossorigin="anonymous">
+    <title>JSSP17 Browser Piano - KLK</title>
+</head>
+<body>
+    <div id="content">
+        <header id="header_content_content">
+            
+        </header>
+        <article id="article_1">
+            <section id="art_1_section_1">
+                <p>Playback will play a pre-recorded session. Record will record the keys you press for the displayed amount of seconds.</p>
+                <p>When using Playback, the audio will start playing in approx. 2-3 seconds as it's being loaded and prepped.</p>
+                <!-- place to put buttons to record / play back and select from the radio list -->
+                <form>
+                        <select name="recording_list" id="recording_list">
+                            <option>Select a file</option>
+                            <!-- EJS no longer used but keeping this here as a reminder of the history -->
+                            <!-- following 5 lines are using ejs to create additional option elements in the dom -->
+                            <!--
+                            <% for(let i=0; i<start_times_list.length; i++) {%>
+                                <option>
+                                        <%= start_times_list[i] %>
+                                </option>
+                            <% } %>
+                            -->
+                        </select>
+                        <button id="playback">Playback</button>
+                        <button id="record">Record</button>
+                        <p id="recording_time">15</p>
+                        <!-- <h1><%= start_times_list %></h1> -->
+                </form>
+            </section>
+            <section id="art_1_section_2">
+                <div>
+                    <canvas id="my_canvas" class="colour_canvas" width="760" height="200">
+                        <!-- used for basic animation -->
+                    </canvas>
+                </div>
+            </section>
+            <section id="art_1_section_3">  
+                <div class="pulse_container" init="false" id="pc3">
+                        <audio id="r_key" class="piano_key" src="audio/keys/Heart_Afire.mp3"></audio>
+                </div>
+                    <!-- place to put the visuals when pressing a key   
+                        Heart_Afire.mp3
+                    -->
+                    <!--<div class="pulse_container" init="false" id="pc0">
+                        pc1
+                        <audio id="q_key" class="piano_key" src="scripts/keys/g_sharp.wav"></audio>
+                    </div>
+                    <div class="pulse_container" init="false" id="pc1">
+                        pc2
+                        <audio id="w_key" class="piano_key" src="scripts/keys/a.wav"></audio>
+                    </div>
+                    <div class="pulse_container" init="false" id="pc2">
+                        pc3
+                        <audio id="e_key" class="piano_key" src="scripts/keys/b.wav"></audio>
+                    </div>-->
+                    
+                    <!-- <div class="pulse_container" init="false" id="pc4">
+                        pc5
+                        <audio id="i_key" class="piano_key" src="scripts/keys/d.wav"></audio>
+                    </div>
+                    <div class="pulse_container" init="false" id="pc5">
+                        pc6
+                        <audio id="o_key" class="piano_key" src="scripts/keys/e.wav"></audio>
+                    </div>
+                    <div class="pulse_container" init="false" id="pc6">
+                        pc7
+                        <audio id="p_key" class="piano_key" src="scripts/keys/f.wav"></audio>
+                    </div>
+                -->    
+            </section>
+        </article>
+        <article id="article_2_content">
+            <section id="art_2_section_1" class="image_container">
+                <!-- place to put pictures / keys for visual representation -->
+                <div class="keyboard_key_container">
+                    <div class="keyboard_key" id="keyboard_q">
+                        <img src="images/keys/q.png" alt="a Q key" width="100" id ="q_image" class="my_image">
+                    </div>
+                    <div class="keyboard_key" id="keyboard_w">
+                        <img src="images/keys/w.png" alt="a W key" width="100" id ="w_image" class="my_image">
+                    </div>
+                    <div class="keyboard_key" id="keyboard_e">
+                        <img src="images/keys/e.png" alt="a E key" width="100" id ="e_image" class="my_image">
+                    </div>
+                    <div class="keyboard_key" id="keyboard_r">
+                        <img src="images/keys/r.png" alt="a R key" width="100" id ="r_image" class="my_image">
+                    </div>
+                    <div class="keyboard_key" id="keyboard_i">
+                        <img src="images/keys/i.png" alt="a I key" width="100" id ="i_image" class="my_image">
+                    </div>
+                    <div class="keyboard_key" id="keyboard_o">
+                        <img src="images/keys/o.png" alt="a O key" width="100" id ="o_image" class="my_image">
+                    </div>
+                    <div class="keyboard_key" id="keyboard_p">
+                        <img src="images/keys/p.png" alt="a P key" width="100" id ="p_image" class="my_image">
+                    </div>
+                </div>
+            </section>
+        </article>
+        
+        <footer id="footer_content">
+            <p>Insert all non-copy-right intended statements here in the footer</p>Acknowledgments and thank yous.
+            <p>Thank you to <a href="https://www.techonthenet.com/clipart/index.php" target="_blank">Tech on the Net</a> where I got the key images from.<br>
+                A big thank you to the user on freesound.org <a href="https://freesound.org/people/pinkyfinger/packs/4409/" target="_blank">pinkyfinger</a> who had posted the audio files for the keys.<br>
+                A huge thank you to my mentor Toby Dussek for teaching me javascript and web programming better then any lecturer I had in university.<br>
+                Credit for the process of handling and manipulating css to the audio goes to <a href="https://www.patrick-wied.at/blog/how-to-create-audio-visualizations-with-javascript-html" target="_blank">Patrick Wied</a> who had put his work up on the internet.
+                And thank you to the staff in Avaya Galway for hosting the course on their grounds and for giving us use of their facilities and assistance.
+                <!-- 
+                    https://stackoverflow.com/questions/5767325/how-do-i-remove-a-particular-element-from-an-array-in-javascript
+                    https://stackoverflow.com/questions/7378228/check-if-an-element-is-present-in-an-array
+                    https://www.google.de/search?rlz=1C1GCEA_enIE768IE768&ei=gTQAWv73CojEkgXZh43ADA&q=javascript+add+to+array&oq=javascript+add+&gs_l=psy-ab.3.0.0l10.2977.3455.0.5353.4.4.0.0.0.0.130.241.0j2.2.0....0...1.1.64.psy-ab..2.2.238...0i67k1.0.oU62jz7T0X0&safe=active&ssui=on
+                    https://stackoverflow.com/questions/5353254/javascript-onkeydown-event-fire-only-once
+                    https://mrcoles.com/piano/
+                    https://www.w3schools.com/html/html5_canvas.asp
+                    https://www.w3schools.com/js/js_switch.asp
+                    https://www.w3schools.com/js/js_date_methods.asp
+                    https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+                    https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/frequencyBinCount
+                    https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/fftSize
+                    https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createAnalyser
+                    https://developer.mozilla.org/en-US/docs/Web/API/AudioContext
+                    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
+                    https://stackoverflow.com/questions/22406661/how-to-make-one-circle-inside-of-another-using-css
+                    https://stackoverflow.com/questions/9437228/html5-check-if-audio-is-playing
+                    https://stackoverflow.com/questions/21955697/variables-between-node-js-server-and-client
+                    http://www.embeddedjs.com/
+                -->
+            </p>
+        </footer>
+    </div>
+</body>
+<script src="javascripts/my_script.js"></script>
+</html>
